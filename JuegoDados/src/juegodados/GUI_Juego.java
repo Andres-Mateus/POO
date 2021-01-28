@@ -2,7 +2,7 @@ package juegodados;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-//import javax.swing.JButton;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -10,8 +10,8 @@ import javax.swing.SwingConstants;
 
 public class GUI_Juego extends JFrame{
     private JPanel panel_1, panel_2;
-    private JLabel titulo, et_usuario, nom_usuario, et_credito, et_monto, et_resultado, et_ndado, et_recompensa, et_bono; 
-    
+    private JLabel titulo, et_usuario, nom_usuario, et_credito, et_monto, et_resultado, et_ndado, et_recompensa, et_bono, et_muestra; 
+    private JButton bt_tirar, bt_terminarjg;
     public GUI_Juego (){
         this.setSize(500,500);
         this.setLocationRelativeTo(null);
@@ -32,7 +32,6 @@ public class GUI_Juego extends JFrame{
     
     public void ColocarEtiquetas(){
         titulo = new JLabel("*Juego de los Dados*");
-        //etiqueta1.setText("*Juego de los Dados*");
         titulo.setOpaque(true);
         titulo.setBackground(Color.white);
         titulo.setFont(new Font("arial",Font.BOLD,30));
@@ -99,9 +98,39 @@ public class GUI_Juego extends JFrame{
         et_bono.setHorizontalAlignment(SwingConstants.CENTER);
         et_bono.setBounds(274, 216, 150, 30);
         panel_1.add(et_bono);
+        
+        et_muestra = new JLabel("**!GANASTE¡**");
+        et_muestra.setOpaque(true);
+        et_muestra.setBackground(Color.white);
+        et_muestra.setFont(new Font("arial",Font.BOLD,30));
+        et_muestra.setHorizontalAlignment(SwingConstants.CENTER);
+        et_muestra.setBounds(90, 257, 320, 40);
+        panel_1.add(et_muestra); 
     }
     
     public void ColocarBotones(){
-        
+        BotonTirar();
+        BotonTerminarJuego();
+    }
+    
+    public void BotonTirar(){
+        bt_tirar = new JButton();
+        bt_tirar.setText("TIRAR");
+        bt_tirar.setLayout(null);
+        bt_tirar.setBounds(185, 315, 130, 45);
+        bt_tirar.setFont(new Font("arial",Font.BOLD, 15));
+        bt_tirar.setForeground(Color.black);
+        bt_tirar.setBackground(Color.white);
+        panel_1.add(bt_tirar);
+    }
+    public void BotonTerminarJuego(){
+        bt_terminarjg = new JButton();
+        bt_terminarjg.setText("TERMINAR");
+        bt_terminarjg.setLayout(null);
+        bt_terminarjg.setBounds(348, 408, 130, 45);
+        bt_terminarjg.setFont(new Font("arial",Font.BOLD, 15));
+        bt_terminarjg.setForeground(Color.black);
+        bt_terminarjg.setBackground(Color.white);
+        panel_1.add(bt_terminarjg);
     }
 }
