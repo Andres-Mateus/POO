@@ -6,6 +6,9 @@ public class Main {
         GUI_Juego ventana1 = new GUI_Juego();
         ventana1.setVisible(true);
         
+        //GUI_Juego ventana2 = new GUI_Juego();
+        //ventana2.setVisible(true); 
+                
         Jugador jugador1 = new Jugador(1, "Jhon", "1234sd", 0);
         Juego dado1 = new Dado(false, jugador1, 0);
         Scanner entrada = new Scanner(System.in);
