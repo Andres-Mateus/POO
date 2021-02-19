@@ -687,11 +687,7 @@ public class GUI_Juego extends JFrame{
         @Override
         public void windowClosing(WindowEvent e){
             jugador1.setCredito(0);
-            registro_us.actualizar_datos(jugador1.getNombre(), jugador1);
-            System.out.println("Se cerro Ventana");            
+            registro_us.actualizar_datos(jugador1.getNombre(), jugador1);         
         }
     }
 }
-
-
-
