@@ -454,7 +454,6 @@ public class GUI_Juego extends JFrame{
                    et_bono.setText("0");
                    bt_tirar.setEnabled(true); 
                    txt_apuesta.setEnabled(true);
-                   //et_muestra.setText(dado1.getTxtResultado());
                   }
                   
               }else{
