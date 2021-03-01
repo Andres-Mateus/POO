@@ -30,4 +30,11 @@ public class Vector2D {
         this.y=y;
     }
     
+    public Vector2D suma(Vector2D v){
+        return new Vector2D(this.x+v.getPosicionX(), this.y+v.getPosicionY());
+    }
+    
+    public Vector2D multiescalar(double valor){
+        return new Vector2D(this.x*valor, this.y*valor);
+    }
 }

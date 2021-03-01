@@ -3,6 +3,7 @@ package Principal;
 import Entrada.Teclado;
 import Estado.EstadoJuego;
 import Graficos.ArchivoActivo;
+import LogicaJuego.Juego;
 import javax.swing.JFrame;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -12,7 +13,7 @@ import java.awt.image.BufferStrategy;
 import javax.swing.JOptionPane;
 
 public class Ventana extends JFrame implements Runnable{
-    private static final int ancho=1300, alto=400;
+    public static final int ancho=1300, alto=400;
     private Canvas lienzo;
     private Thread hilojuego;
     
@@ -26,7 +27,7 @@ public class Ventana extends JFrame implements Runnable{
     private double tiempofotograma = 1000000000/FPS;
     private double variaciontiempo = 0;
     private double promedioFPS= FPS;
-    public boolean runninggame = false;
+    public static boolean runninggame = false;
             
     public Ventana(){
         this.setTitle("Salta o Muere");
@@ -34,7 +35,7 @@ public class Ventana extends JFrame implements Runnable{
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-        //this.setVisible(true);
+        
         
         lienzo = new Canvas();
         teclado = new Teclado();
@@ -46,11 +47,17 @@ public class Ventana extends JFrame implements Runnable{
         
         this.add(lienzo);
         lienzo.addKeyListener(teclado);
+        
+        this.setVisible(true);
+    }
+
+    public static void setRunninggame(boolean runninggame) {
+        Ventana.runninggame = runninggame;
     }
     
     public static void main(String[] args){
+        JOptionPane.showMessageDialog(null, "¿Estás listo para jugar?");
         Ventana ventana = new Ventana();
-        ventana.setVisible(true);
         ventana.start();
     }
     
@@ -58,7 +65,7 @@ public class Ventana extends JFrame implements Runnable{
         ArchivoActivo.inicializar();
         estadojuego = new EstadoJuego();
     }
-    int x=0;
+   
     public void actualizar(){
         teclado.actualizar();
         estadojuego.actualizar();
@@ -78,7 +85,7 @@ public class Ventana extends JFrame implements Runnable{
         
         grafico.fillRect(0, 0, ancho, alto);
         estadojuego.dibujar(grafico);
-        grafico.drawString(("FPS: "+promedioFPS),1215,350);
+        grafico.drawString(("FPS: "+promedioFPS),1125,350);
         
         //------------------
         
@@ -93,7 +100,6 @@ public class Ventana extends JFrame implements Runnable{
         int fotogramas = 0;
         int tiempo = 0;
         inicializar();
-        
         while(runninggame){
             tahora = System.nanoTime();
             variaciontiempo += (tahora-tantes)/tiempofotograma;
@@ -113,7 +119,7 @@ public class Ventana extends JFrame implements Runnable{
                 tiempo = 0;
             }
         }
-        
+        System.out.println("Se paro");
         stop();
     }
     
@@ -125,7 +131,9 @@ public class Ventana extends JFrame implements Runnable{
     
     public void stop(){
         try{
+            System.out.println("paso por aquí");
             hilojuego.join();
+            System.exit(0);
         }catch(InterruptedException e){
             JOptionPane.showMessageDialog(null,"Se produjo el error: "+e.getMessage());
         }

@@ -19,7 +19,6 @@ public class Teclado extends KeyAdapter{
     
     @Override
     public void keyPressed(KeyEvent e){
-        System.out.println("tecla: "+e.getKeyCode());
         teclas[e.getKeyCode()]=true;
     }
     
