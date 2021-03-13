@@ -56,8 +56,8 @@ public class Toro extends ObjetoJuego{
     }
     
     public Area getBounds(){
-        Ellipse2D forma1 = new Ellipse2D.Double(posicion.getPosicionX(),(posicion.getPosicionY()+20), 12, 12);
-        Rectangle forma2 = new Rectangle((int)(posicion.getPosicionX()), (int)(posicion.getPosicionY()+35), 30, 25);
+        Ellipse2D forma1 = new Ellipse2D.Double(posicion.getPosicionX(),(posicion.getPosicionY()+20), 15, 15);
+        Rectangle forma2 = new Rectangle((int)(posicion.getPosicionX()), (int)(posicion.getPosicionY()+35), 40, 35);
         cabeza = new Area(forma1);
         cuerpo = new Area(forma2); 
         

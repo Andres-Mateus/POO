@@ -43,6 +43,7 @@ public class Corredor extends ObjetoJuego{
             saltando=true;
         }
         saltar();
+        getBounds();
         if(Toro.isColision()){
             posicion.setPosicionX(120);
             posicion.setPosicionY(230);
@@ -86,15 +87,15 @@ public class Corredor extends ObjetoJuego{
     public void getBounds(){
         Ellipse2D forma = new Ellipse2D.Double(posicion.getPosicionX(),posicion.getPosicionY(), 20, 20);
         cabeza = new Area(forma);
-        Rectangle forma1 = new Rectangle((int)posicion.getPosicionX(),(int)(posicion.getPosicionY()+20),10,8);
+        Rectangle forma1 = new Rectangle((int)posicion.getPosicionX(),(int)(posicion.getPosicionY()+20),30,25);
         piernaatras=new Area(forma1);
-        Rectangle forma2 = new Rectangle((int)(posicion.getPosicionX()+20),(int)(posicion.getPosicionY()+20), 10,8);
+        Rectangle forma2 = new Rectangle((int)(posicion.getPosicionX()+20),(int)(posicion.getPosicionY()+20), 30,25);
         piernaadelante= new Area(forma2);
         
         System.out.println("ancho corredor "+ArchivoActivo.corredor.getWidth()+"alto corredor "+ArchivoActivo.corredor.getHeight());
         
         cuerpo=cabeza;
-        
+        cuerpo.add(cabeza);
         cuerpo.add(piernaatras);
         cuerpo.add(piernaadelante);
         
