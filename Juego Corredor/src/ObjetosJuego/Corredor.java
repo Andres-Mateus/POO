@@ -92,7 +92,7 @@ public class Corredor extends ObjetoJuego{
         Rectangle forma2 = new Rectangle((int)(posicion.getPosicionX()+20),(int)(posicion.getPosicionY()+20), 30,25);
         piernaadelante= new Area(forma2);
         
-        System.out.println("ancho corredor "+ArchivoActivo.corredor.getWidth()+"alto corredor "+ArchivoActivo.corredor.getHeight());
+        //System.out.println("ancho corredor "+ArchivoActivo.corredor.getWidth()+"alto corredor "+ArchivoActivo.corredor.getHeight());
         
         cuerpo=cabeza;
         cuerpo.add(cabeza);
