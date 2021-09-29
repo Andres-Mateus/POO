@@ -1,4 +1,6 @@
-
+/*
+    Pone en memoria los recursos multimedia que usamos
+*/
 package Graficos;
 
 import java.awt.image.BufferedImage;

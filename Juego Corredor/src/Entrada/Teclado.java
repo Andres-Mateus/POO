@@ -1,3 +1,6 @@
+/*
+    Clase para manejar los eventos de teclado
+*/
 package Entrada;
 
 import java.awt.event.KeyAdapter;

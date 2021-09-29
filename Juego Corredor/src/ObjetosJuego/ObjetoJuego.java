@@ -1,3 +1,6 @@
+/*
+    Clase para crear cualquier objeto del juego, con su posiciones y propiedades
+*/
 package ObjetosJuego;
 
 import Calculos.Vector2D;

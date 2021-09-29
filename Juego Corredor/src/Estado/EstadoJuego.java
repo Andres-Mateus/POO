@@ -1,4 +1,6 @@
-
+/*
+    Maneja la inicialización, el dibujo y la actualización de cada componente del juego
+*/
 package Estado;
 
 import Calculos.Vector2D;

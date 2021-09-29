@@ -1,4 +1,6 @@
-
+/*
+    Cargar en memoria los archivos multimedia usando BufferedImage
+*/
 package Graficos;
 
 import java.awt.image.BufferedImage;

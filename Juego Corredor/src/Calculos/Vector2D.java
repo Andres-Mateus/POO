@@ -1,4 +1,6 @@
-
+/*
+    Maneja los vectores de cada componente del juego
+*/
 package Calculos;
 
 public class Vector2D {

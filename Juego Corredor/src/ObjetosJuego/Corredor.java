@@ -1,3 +1,6 @@
+/*
+    Crea todas la propiedades y acciones del corredor
+*/
 package ObjetosJuego;
 
 import Calculos.Vector2D;
