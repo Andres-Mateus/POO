@@ -62,8 +62,8 @@ public class Ventana extends JFrame implements Runnable{
         JOptionPane.showMessageDialog(null, "¿Estás listo para jugar?");
         Ventana ventana = new Ventana();
         ventana.start();
-        Ventana ventana2 = new Ventana();
-        ventana2.start();
+        //Ventana ventana2 = new Ventana();
+        //ventana2.start();
     }
     
     public void inicializar(){//inicializa los componentes necesarios para el juego
@@ -110,7 +110,7 @@ public class Ventana extends JFrame implements Runnable{
             variaciontiempo += (tahora-tantes)/tiempofotograma;
             tiempo += (tahora-tantes);
             tantes = tahora;
-            System.out.println("Tiempo: "+tiempo);
+            //System.out.println("Tiempo: "+tiempo);
             if(variaciontiempo >= 1){
                 actualizar();//actualiza el canva cada ciclo igual de tiempo
                 dibujar();//dibuja el canva ya actualizado
@@ -136,10 +136,12 @@ public class Ventana extends JFrame implements Runnable{
     
     public void stop(){
         try{
-            //System.out.println("paso por aquí");
+            dispose();
+            System.exit(0);
             hilojuego.join();
             runninggame=false;//el juego termino de correr
-            System.exit(0);
+            System.out.println("paso por aquí");
+            
         }catch(InterruptedException e){
             JOptionPane.showMessageDialog(null,"Se produjo el error: "+e.getMessage());
         }
