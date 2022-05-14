@@ -20,7 +20,6 @@ import javax.swing.JTextArea;
 
 class Main {
     public static void main(String[] args) {
-        
         GUI_Juego ventana1 = new GUI_Juego();
         ventana1.setVisible(true);
     }

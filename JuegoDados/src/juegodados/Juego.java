@@ -114,8 +114,4 @@ public class Juego {
                     + "diferente, pierdes. Presione 'Tirar'";
         }
     }
-    
-    public void girar(){
-        
-    }
 }
