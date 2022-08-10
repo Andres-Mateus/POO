@@ -90,10 +90,11 @@ class Panel extends JPanel {
 
     private VentanaFactura miVentana;
 
-    private JLabel titulo, et_tipoEmpleado, et_codEmpleado, et_cedulaCliente;
+    private JLabel titulo, et_tipoEmpleado, et_codEmpleado
+                , et_cedulaCliente, et_codCliente, et_tipoDetalle;
     private JButton bt_ingresar, bt_cliente;
     private JTextField txt_codEmpleado, txt_cedulaCliente;
-    private JComboBox tiposEmpleado;
+    private JComboBox tiposEmpleado, tipoDetalle;
 
     private String texto;
     
@@ -123,9 +124,10 @@ class Panel extends JPanel {
 
         tiposEmpleado = new JComboBox();
         //tiposEmpleado.setEditable(true); editarText
-        tiposEmpleado.setBackground(Color.LIGHT_GRAY);
-        tiposEmpleado.setFont(new Font("arial", Font.BOLD, 20));
+        tiposEmpleado.setBackground(Color.WHITE);
+        tiposEmpleado.setFont(new Font("arial", Font.BOLD, 18));
         tiposEmpleado.setBounds(275, 175, 120, 21);
+        tiposEmpleado.setForeground(Color.BLACK);
 
         tiposEmpleado.addItem("Auxiliar");
         tiposEmpleado.addItem("Jefe");
@@ -170,6 +172,35 @@ class Panel extends JPanel {
 
         //txt_tipoEmpleado.addKeyListener(tecla);
         this.add(txt_cedulaCliente);
+        
+        et_codCliente = new JLabel("Registrar cliente.");
+        et_codCliente.setOpaque(true);
+        et_codCliente.setBackground(Color.LIGHT_GRAY);
+        et_codCliente.setFont(new Font("arial", Font.BOLD, 15));
+        et_codCliente.setBounds(300, 130, 400, 21);
+        et_codCliente.setForeground(Color.BLACK);
+        et_codCliente.setHorizontalAlignment(SwingConstants.CENTER);
+        this.add(et_codCliente);
+        
+        et_tipoDetalle = new JLabel("Tipo Detalle");
+        et_tipoDetalle.setOpaque(true);
+        et_tipoDetalle.setBackground(Color.LIGHT_GRAY);
+        et_tipoDetalle.setFont(new Font("arial", Font.BOLD, 20));
+        et_tipoDetalle.setBounds(355, 100, 200, 21);
+        this.add(et_tipoDetalle);
+        
+        tipoDetalle = new JComboBox();
+        //tiposEmpleado.setEditable(true); editarText
+        tipoDetalle.setBackground(Color.WHITE);
+        tipoDetalle.setFont(new Font("arial", Font.BOLD, 18));
+        tipoDetalle.setBounds(500, 156, 150, 21);
+        tipoDetalle.setForeground(Color.BLACK);
+        
+        tipoDetalle.addItem("Ensamble");
+        tipoDetalle.addItem("Producto");
+
+        tipoDetalle.addActionListener(evCombo);
+        this.add(tipoDetalle);
         
     }
     
