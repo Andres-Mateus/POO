@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class MetodosBD {
@@ -115,6 +116,85 @@ public class MetodosBD {
             JOptionPane.showMessageDialog(null, "Error: "+ e.getMessage());
         }
        return empleado;
+    }
+    
+    public String getcodCliente(String cedula){
+        miConexion.setConexion();
+        String codCliente = "0"; 
+        try{
+            String cadena=("SELECT * FROM Persona WHERE idenperson='"+cedula+"';");
+
+            miStatementConstante=miConexion.getMiConexion().createStatement();
+
+            ResultSet miResultset=miStatementConstante.executeQuery(cadena);
+            codCliente = miResultset.getString("idpersona");
+            if (codCliente.equals("") || codCliente.equals(null)) {
+                codCliente = "vacio";
+            }
+            System.out.println(codCliente);
+            miStatementConstante.close();
+            miConexion.desconectarBD();
+        }catch(Exception e){
+            codCliente = "vacio";
+            
+            JOptionPane.showMessageDialog(null, "Error: "+ e.getMessage());
+        }
+       return codCliente;
+    }
+    
+    public String[] getDatosColumna(String nomTabla, String nomColumna){
+        miConexion.setConexion();
+        String[] datos = new String[200]; 
+        int contador = 0;
+        try{
+            String cadena=("SELECT * FROM "+nomTabla);
+
+            miStatementConstante=miConexion.getMiConexion().createStatement();
+
+            ResultSet miResultset=miStatementConstante.executeQuery(cadena);
+            
+            while (miResultset.next()) {
+                datos[contador] = miResultset.getString(nomColumna.trim());
+                System.out.println(datos[contador]);
+                contador++;
+            }
+            
+            miStatementConstante.close();
+            miConexion.desconectarBD();
+        }catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "Error: "+ e.getMessage());
+        }
+       return datos;
+    }
+    
+    public String[] getDatosRegistroDetalleFactura(String id, String valorId){
+        miConexion.setConexion();
+        String[] datos = new String[200]; 
+        try{
+            String cadena=("SELECT * FROM detallefactura WHERE "+id+"='"+valorId+"';");
+
+            miStatementConstante=miConexion.getMiConexion().createStatement();
+
+            ResultSet miResultset=miStatementConstante.executeQuery(cadena);
+           
+            
+            while (miResultset.next()) {
+                datos[0] = miResultset.getString("item");
+                datos[1] = miResultset.getString("idtipodetallefk");
+                datos[2] = miResultset.getString("idRef");
+                datos[3] = miResultset.getString("cantidad");
+                datos[4] = miResultset.getString("precio");
+            }
+            
+            
+            miStatementConstante.close();
+            miConexion.desconectarBD();
+        }catch(Exception e){
+    
+            JOptionPane.showMessageDialog(null, "Error: "+ e.getMessage());
+        }
+       return datos;
     }
     
     public void eliminarRegistro(String nomTabla, String nomId, String valorId){
